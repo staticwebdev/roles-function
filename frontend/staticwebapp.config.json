@@ -6,7 +6,7 @@
         },
         {
             "route": "/authenticated/*",
-            "allowedRoles": [ "authenticated "]
+            "allowedRoles": [ "authenticated" ]
         }
     ],
     "auth": {
