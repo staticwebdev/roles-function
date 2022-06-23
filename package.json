@@ -1,24 +1,11 @@
 {
   "name": "roles-function",
   "version": "1.0.0",
-  "description": "See [this tutorial](https://docs.microsoft.com/azure/static-web-apps/assign-roles-microsoft-graph) for more details.",
-  "main": "index.js",
   "scripts": {
     "start": "swa start frontend --api-location api",
     "playwright_test": "playwright test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HannahZhuSWE/roles-function.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HannahZhuSWE/roles-function/issues"
-  },
-  "homepage": "https://github.com/HannahZhuSWE/roles-function#readme",
-  "devDependencies": {
+"devDependencies": {
     "@playwright/test": "^1.22.2"
   }
 }
