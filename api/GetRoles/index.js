@@ -11,7 +11,7 @@ module.exports = async function (context, req) {
     const roles = [];
     
     for (const [role, groupId] of Object.entries(roleGroupMappings)) {
-        if (await isUserInGroup(groupId, user.accessToken)) {
+        if (await isUserInGroup(groupId, user.accessToken, context)) {
             roles.push(role);
         }
     }
@@ -21,7 +21,7 @@ module.exports = async function (context, req) {
     });
 }
 
-async function isUserInGroup(groupId, bearerToken) {
+async function isUserInGroup(groupId, bearerToken, context) {
     const url = new URL('https://graph.microsoft.com/v1.0/me/memberOf');
     url.searchParams.append('$filter', `id eq '${groupId}'`);
     const response = await fetch(url, {
@@ -32,6 +32,8 @@ async function isUserInGroup(groupId, bearerToken) {
     });
 
     if (response.status !== 200) {
+        const responsebody = await response.json();
+        context.log.error('Failed to query graph.microsoft.com with http status code', response.status, 'and message:', JSON.stringify(responsebody.error.message));
         return false;
     }
 

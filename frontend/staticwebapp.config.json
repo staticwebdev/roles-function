@@ -13,15 +13,14 @@
         "rolesSource": "/api/GetRoles",
         "identityProviders": {
             "azureActiveDirectory": {
-                "userDetailsClaim": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
                 "registration": {
-                    "openIdIssuer": "https://login.microsoftonline.com/<YOUR_AAD_TENANT_ID>",
+                    "openIdIssuer": "https://login.microsoftonline.com/<YOUR_AAD_TENANT_ID>/v2.0",
                     "clientIdSettingName": "AAD_CLIENT_ID",
                     "clientSecretSettingName": "AAD_CLIENT_SECRET"
                 },
                 "login": {
                     "loginParameters": [
-                        "resource=https://graph.microsoft.com"
+                        "scope=openid+profile+email+user.read"
                     ]
                 }
             }
